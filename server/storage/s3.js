@@ -5,6 +5,14 @@ class S3Storage {
   constructor(config, log) {
     this.bucket = config.s3_bucket;
     this.log = log;
+    const aws_config = {
+      s3ForcePathStyle: config.s3_force_path_style
+    }
+    if (config.s3_endpoint != '') {
+      aws_config.endpoint = config.s3_endpoint;
+    }
+
+    AWS.config.update(aws_config);
   }
 
   async length(id) {
