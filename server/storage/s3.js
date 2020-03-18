@@ -8,8 +8,10 @@ class S3Storage {
     const aws_config = {
       s3ForcePathStyle: config.s3_force_path_style
     }
+
     if (config.s3_endpoint != '') {
       aws_config.endpoint = config.s3_endpoint;
+      console.log('Using endpoint: ', aws_config.endpoint);
     }
 
     AWS.config.update(aws_config);
